@@ -3,6 +3,7 @@ import dummyCaseData from "./dummyCaseData";
 import "./Case.css"; // Assuming you have a separate CSS file named case.css
 import { AiOutlineSearch } from "react-icons/ai";
 import{MdDeleteForever} from "react-icons/md"
+import { addData } from "../../utils/docsmanage.utils";
 const Case = () => {
   const [selectedCase, setSelectedCase] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +31,18 @@ const Case = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data={
+      caseNo,
+      caseName,
+      partyName,
+      courtName,
+      partyContactNo,
+      adversePartyName,
+      adversePartyLawyerName,
+      adversePartyLawyerNo,
+      description,
+    }
+    addData(data);
     if (!caseNo || !caseName || !partyName || !courtName) {
       alert("Please fill in all the required fields.");
       return;
